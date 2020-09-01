@@ -1,0 +1,31 @@
+.login-page{
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+    background: transparent url('/assets/Gambar Untuk press Release-02.png') 0% 0% no-repeat padding-box;
+    background-color: #3B7FBA;
+    opacity: 1;
+    .content{
+        padding-top: 170px;
+        .login__header{
+            color: #FFFFFF;
+            font: normal normal 300 22px/42px Lato;
+            small{
+                opacity: 70%;
+                font: normal normal;
+            }
+        }
+        .login__form_input{
+            .form_input{
+                border-bottom: 1px solid #FFFFFF;
+            }
+        }
+    }
+    .paper__login_title{
+        font-style: Lato;
+        font-family: 'Lato';
+        opacity: 1;
+        font-size: 45px;
+    }
+}

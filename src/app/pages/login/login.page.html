@@ -1,0 +1,40 @@
+<!-- <ion-content> -->
+<div class="login-page">
+  <ion-row class="content">
+    <ion-col size="3" offset="1">
+      <div class="login__header ion-text-center">
+        <ion-title class="paper__login_title">Masuk ke Paper.id
+          <img src="/assets/Tutorial.png" width="5%" height="5%">
+        </ion-title>
+        <small>Masuk dengan akun yang terdaftar di <br> Paper.id/Payper</small>
+      </div>
+      <form (ngSubmit)="onSubmitHandler()">
+        <div class="login__form_input">
+          <ion-row>
+            <ion-col size="12">
+              <div class="form_input ion-padding-bottom">
+                <ion-input [(ngModel)]="state.username" name="username" type="text" placeholder="Username">
+                  <ion-icon name="person-outline"></ion-icon>
+                </ion-input>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="form_input ion-padding-top ion-padding-bottom">
+                <ion-input [(ngModel)]="state.password" name="password" type="password" placeholder=" Kata Sandi">
+                  <ion-icon name="lock-closed-outline"></ion-icon>
+                </ion-input>
+              </div>
+            </ion-col>
+            <ion-col size="12" class="ion-text-right ion-padding-top ion-padding-bottom">
+              <small>Lupa Kata Sandi ?</small>
+            </ion-col>
+            <ion-col size="12" class="ion-padding-top">
+              <ion-button type="submit" expand="block" shape="round">Masuk</ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </form>
+    </ion-col>
+  </ion-row>
+</div>
+<!-- </ion-content> -->

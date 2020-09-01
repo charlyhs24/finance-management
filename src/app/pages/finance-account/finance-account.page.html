@@ -1,0 +1,90 @@
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="logoutHandler()">
+      <ion-icon name="log-out-outline"></ion-icon>Logout
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-item>
+      <ion-buttons>
+        <ion-button [routerLink]="['/finance-account']">
+          Account
+        </ion-button>
+        <ion-button [routerLink]="['/finance']">
+          Transaction
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-toolbar>
+  <ion-row class="ion-margin-start ion-margin-top ion-padding-top">
+    <ion-title>All Finance Account</ion-title>
+  </ion-row>
+  <ion-row class="ion-margin-start">
+    <ion-col size-md="6">
+      <ion-searchbar></ion-searchbar>
+    </ion-col>
+    <ion-col size-md="2" offset="3">
+      <ion-button (click)="showModalHandler()" shape="round">Create New Account</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="table__finance_account">
+    <ion-row class="table_header">
+      <ion-col size-md="3">
+        <ion-item (click)="sortFieldHandler('name')">
+          <h6><b>Account Name</b></h6>
+          <ion-icon name="funnel-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="3">
+        <ion-item (click)="sortFieldHandler('description')">
+          <h6><b>Description</b></h6>
+          <ion-icon name="funnel-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="3">
+        <ion-item (click)="sortFieldHandler('type')">
+          <h6><b>Account Type</b></h6>
+          <ion-icon name="funnel-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="3">
+        <ion-item>
+          <h6><b>Action</b></h6>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let FINANCE of LIST_OF_FINANCE" class="table_body">
+      <ion-col class="ion-text-center" size-md="3">
+        {{FINANCE.name}}
+      </ion-col>
+      <ion-col class="ion-text-center" size-md="3">
+        {{FINANCE.Description}}
+      </ion-col>
+      <ion-col class="ion-text-center" size-md="3">
+        {{FINANCE.type}}
+      </ion-col>
+      <ion-col size-md="3" class="ion-text-center">
+        <div class="dropdown">
+          <button class="dropbtn">Action</button>
+          <div class="dropdown-content">
+            <ion-item (click)="viewHandler(FINANCE)">
+              <ion-icon name="eye-outline"></ion-icon>
+              View
+            </ion-item>
+            <ion-item (click)="EditHandler(FINANCE)">
+              <ion-icon name="create-outline"></ion-icon>
+              Edit
+            </ion-item>
+            <ion-item (click)="DeleteHandler(FINANCE)">
+              <ion-icon name="close-circle-outline"></ion-icon>
+              Delete
+            </ion-item>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

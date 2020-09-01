@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from './services/auth-service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,46 +14,35 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Dashboard',
+      url: 'dashboard',
+      icon: 'home-outline'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
-    },
-    {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
-    },
-    {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'finance',
+      url: 'finance',
+      icon: 'briefcase-outline'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private navCtrl: NavController,
+    private auth: AuthService
   ) {
-    this.initializeApp();
+    this.isLogedin();
   }
-
+  async isLogedin() {
+    const isLogedIn = await this.auth.isLogedIn();
+    if (isLogedIn) {
+      this.navCtrl.navigateRoot('');
+      this.initializeApp();
+    } else {
+      this.navCtrl.navigateRoot('/login');
+    }
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

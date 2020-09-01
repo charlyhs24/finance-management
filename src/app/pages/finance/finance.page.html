@@ -1,0 +1,106 @@
+<ion-toolbar>
+    <ion-buttons slot="end">
+        <ion-button (click)="logoutHandler()">
+            <ion-icon name="log-out-outline"></ion-icon>Logout
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+    <ion-item>
+        <ion-toolbar>
+            <ion-buttons>
+                <ion-button [routerLink]="['/finance-account']">
+                    Account
+                </ion-button>
+                <ion-button [routerLink]="['/finance']">
+                    Transaction
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-item>
+    <ion-row class="ion-margin-top ion-margin-start ion-padding-top">
+        <ion-title>All Finance Transactions</ion-title>
+    </ion-row>
+    <ion-row class="ion-margin-start">
+        <ion-col size-md="6">
+            <ion-searchbar></ion-searchbar>
+        </ion-col>
+        <ion-col size-md="2" offset="3">
+            <ion-button (click)="showModalHandler()" shape="round">Create New Transaction</ion-button>
+        </ion-col>
+    </ion-row>
+    <div class="table__finance">
+        <ion-row class="table_header">
+            <ion-col size-md="2">
+                <ion-item (click)="sortFieldHandler('created_at')">
+                    <p><b>Transaction Date</b></p>
+                    <ion-icon name="funnel-outline" slot="end"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col size-md="2">
+                <ion-item>
+                    <p><b>Finance Account</b></p>
+                </ion-item>
+            </ion-col>
+            <ion-col size-md="2">
+                <ion-item (click)="sortFieldHandler('finance_account_name')">
+                    <p><b>Finance Account Name</b></p>
+                    <ion-icon name="funnel-outline" slot="end"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col size-md="2">
+                <ion-item (click)="sortFieldHandler('finance_account_id')">
+                    <p><b>Reference</b></p>
+                    <ion-icon name="funnel-outline" slot="end"></ion-icon>
+                </ion-item>
+            </ion-col>
+            <ion-col size-md="2">
+                <ion-item>
+                    <p><b>Amount</b></p>
+                </ion-item>
+            </ion-col>
+            <ion-col size-md="2">
+                <ion-item>
+                    <p><b>Action</b></p>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let FINANCE of LIST_OF_FINANCE" class="table_body">
+            <ion-col class="ion-text-center" size-md="2">
+                {{FINANCE.created_at}}
+            </ion-col>
+            <ion-col class="ion-text-center" size-md="2">
+                {{FINANCE.finance_account_type}}
+            </ion-col>
+            <ion-col class="ion-text-center" size-md="2">
+                {{FINANCE.finance_account_name}}
+            </ion-col>
+            <ion-col class="ion-text-center" size-md="2">
+                {{FINANCE.finance_account_id}}
+            </ion-col>
+            <ion-col class="ion-text-center" size-md="2">
+                {{FINANCE.credit_amount}}
+            </ion-col>
+            <ion-col size-md="2" class="ion-text-center">
+                <div class="dropdown">
+                    <button class="dropbtn">Action</button>
+                    <div class="dropdown-content">
+                        <ion-item (click)="viewHandler(FINANCE)">
+                            <ion-icon name="eye-outline"></ion-icon>
+                            View
+                        </ion-item>
+                        <ion-item (click)="EditHandler(FINANCE)">
+                            <ion-icon name="create-outline"></ion-icon>
+                            Edit
+                        </ion-item>
+                        <ion-item (click)="DeleteHandler(FINANCE)">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                            Delete
+                        </ion-item>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

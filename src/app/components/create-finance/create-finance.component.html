@@ -1,0 +1,52 @@
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="closeModal()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content fullscreen class="ion-align-items-center ion-padding">
+  <ion-row>
+    <ion-col size="12">
+      <ion-title>Create New Finance</ion-title>
+    </ion-col>
+  </ion-row>
+  <form (ngSubmit)="onSubmitNewFinance()">
+    <ion-row class="ion-padding">
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Finance Name</ion-label>
+          <ion-input [(ngModel)]="state.title" name="title" type="text" placeholder="Input your finance name">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Finance Account</ion-label>
+          <ion-select [(ngModel)]="state.finance_account_id" name="finance_account_id"
+            placeholder="Select Finance Account">
+            <ion-select-option *ngFor="let FINANCE of LIST_OF_FINANCE" [value]="FINANCE.id">{{FINANCE.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input [(ngModel)]="state.amount" type="number" name="amount"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input [(ngModel)]="state.description" name="description"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button type="submit" shape="round">Simpan</ion-button>
+        <ion-button (click)="closeModal()" shape="round" fill="outline">Batal</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>

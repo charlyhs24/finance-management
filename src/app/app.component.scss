@@ -1,5 +1,7 @@
 ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  // --background: var(#488CC7, var(--ion-background-color, --ion-color-primary));
+  --ion-background-color: #569AD3;
+  --ion-text-color: var(--ion-color-primary-contrast);
 }
 
 ion-menu.md ion-content {
@@ -23,7 +25,7 @@ ion-menu.md ion-note {
 }
 
 ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
+  // border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
 }
 
 ion-menu.md ion-list#inbox-list ion-list-header {
